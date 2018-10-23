@@ -1,0 +1,99 @@
+
+
+Triangles
+Problem Description
+A number (N) of lines (extending to infinity) in both directions are drawn on a plane. The lines are specified by the angle (positive or negative) made with the x axis (in degrees). It may be assumed that the different lines are not coincident (they do nnot overlap each other) and that no three of them are concurrent (no three of them pass through the same point).
+
+The objective is to determine the number of triangles formed by the a set of these lines
+
+If the lines are given with an angle of 10, 70, 30 and 30, the figure looks like this
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@3c0911ff:image1.png
+
+L1 is at 10 degrees to the x axis, L2 is at 70 degrees to the x axis, L3 and L4 are at 30 degrees to the x axis. It can be seen that there are two triangles (L1,L2,L3 and L1,L2,L4). L3 and L4 do not meet as they are parallel.
+
+Constraints
+N<=50
+
+-89 <= angle for any line <=90
+
+Input Format
+The first line of the input consists of a single integer, N.
+
+The next line consists of a series of integers (positive, zero or negative), each corresponding to a separate line, and giving the angle that it makes with the x axis (measured in degrees and in anticlockwise direction).
+
+
+
+
+Explanation
+Example 1
+
+Input
+
+5
+
+20,-20,0,50,50
+
+Output
+
+7
+
+Explanation
+
+There are 5 lines, with angles at 20,-20,0, 50 and 50 degrees with the x axis. The figure looks like this
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@3c0911ff:image2.png
+
+There are 7 triangles, those formed by (L1,L2,L3),(L1,L2,L5), (L1,L2,L4), (L1,L3,L4), (L1,L3,L5), (L2,L3,L5), (L2,L3,L4). Hence the output is 7.
+
+Example 2
+
+Input
+
+5
+
+50,-50,50,-50,50
+
+Output
+
+0
+
+Explanation
+
+There are 5 lines with angles 50,-50,50,-50 and 50 degrees. The figure looks like this
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@3c0911ff:image3.png
+
+As L1,L3 and L5 are parallel, and L2 and L4 are parallel, no triangles are formed by any set of three lines. Hence, the output is 0.
+
+  
+
+#include<stdio.h>
+void main()
+{
+    int i,j,k,n,a[n],t[n],count=0;
+    //printf("enter num of axis");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            for(k=j+1;k<n;k++)
+            {
+                if(a[i]!=a[j] && a[j]!=a[k] && a[k]!=a[i])
+                {
+                    count=count+1;
+                    //printf(" hi %d",count);
+                }
+            }
+        }
+        
+    }
+    printf("%d",count);
+    
+}
